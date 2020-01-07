@@ -2,7 +2,7 @@ import os, glob, shutil
 from config import *
 
 os.chdir(dl)
-dlfiles = glob.glob("D:\\Downloads\\*")
+dlfiles = glob.glob("%s\\*" %dl)
 
 
 exeDetect = []
