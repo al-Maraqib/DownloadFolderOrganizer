@@ -1,20 +1,27 @@
 import os, glob, shutil
+from config import *
 
-dl = "D:\\Downloads"
 os.chdir(dl)
 dlfiles = glob.glob("D:\\Downloads\\*")
-folderslist = ['Executables', 'Documents', 'Images', 'Torrents', 'Compressed', 'Misc.']
-EXext = ['.exe', '.msi']
-DOCext = ['.docx', '.pptx', '.pdf']
-IMAGEext = ['.png', '.jpg', '.jpeg']
-TORRENText = ['.torrent']
-COMPRESSEDext = ['.zip', '.rar', '.7z',]
 
-exeDetect = glob.glob('*.exe') + glob.glob('*.msi')
-docDetect = glob.glob('*.docx') + glob.glob('*.pdf') + glob.glob('*.pptx') + glob.glob('*.xlsx') 
-imageDetect = glob.glob('*.png') + glob.glob('*.jpg') + glob.glob('*.jpeg')
-torrentDetect = glob.glob('*.torrent')
-compressedDetect = glob.glob('*.zip') + glob.glob('*.rar') + glob.glob('*.7z')
+
+exeDetect = []
+docDetect = []
+imageDetect = []
+torrentDetect = []
+compressedDetect = []
+
+for extension in EXEext:
+    exeDetect.extend(glob.glob(dl + "\\%s" %(extension)))
+for extension in DOCext:
+    docDetect.extend(glob.glob(dl + "\\%s" %(extension)))
+for extension in IMAGEext:
+    imageDetect.extend(glob.glob(dl + "\\%s" %(extension)))
+for extension in TORRENText:
+    torrentDetect.extend(glob.glob(dl + "\\%s" %(extension)))
+for extension in COMPRESSEDext:
+    compressedDetect.extend(glob.glob(dl + "\\%s" %(extension)))
+
 
 for folder in folderslist:
     if not os.path.exists(os.path.join(dl,str(folder))):
